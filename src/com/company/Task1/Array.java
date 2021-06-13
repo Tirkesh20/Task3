@@ -34,9 +34,11 @@ private int counter;
             array[counter]=value;
             counter++;
             return array;
+        }else {
+            arr[counter] = value;
+            counter++;
+            return arr;
         }
-        arr[counter]=value;
-        return arr;
     }
 
     public int getMax(){
@@ -75,6 +77,23 @@ private int counter;
 
     public static boolean isPrime(int value){
         return value % 2 != 0;
+    }
+
+    @Override
+    public int hashCode(){
+        int result=21;
+        result=5*result+Integer.hashCode(N);
+        result=5*result+ Arrays.hashCode(arr);
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if (this==o)return true;
+        if (o==null||getClass()!=o.getClass()) return false;
+        Array array=(Array) o;
+        if (N!=array.N)return false;
+        return counter == array.counter && Arrays.equals(arr, array.arr);
     }
 
 }
