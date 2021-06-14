@@ -1,6 +1,6 @@
 package com.company.Task1;
 
-import java.util.Arrays;
+import  java.util.Arrays;
 
 public class Array {
 
@@ -18,6 +18,12 @@ private int counter;
         N = n;
         arr=new int[N];
         counter=0;
+    }
+
+    public Array(int... values){
+        N=values.length;
+        arr=values;
+        counter=N;
     }
 
     public int[] addToArray(int index,int value) throws IndexOutOfBoundsException {
