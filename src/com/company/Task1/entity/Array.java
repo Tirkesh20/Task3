@@ -28,6 +28,32 @@ private int counter;
         counter=0;
     }
 
+
+      public int binarySearch(int item) {
+            int first=0;
+            int last=N-1;
+            int position;
+            int comparisonCount = 1;    // для подсчета количества сравнений
+
+            // для начала найдем индекс среднего элемента массива
+            position = (first + last) / 2;
+
+            while ((arr[position] != item) && (first <= last)) {
+                comparisonCount++;
+                if (arr[position] > item) {  // если число заданного для поиска
+                    last = position - 1; // уменьшаем позицию на 1.
+                } else {
+                    first = position + 1;    // иначе увеличиваем на 1
+                }
+                position = (first + last) / 2;
+            }
+            if (first <= last) {
+               return this.arr[++position];
+            } else {
+                return 0;
+            }
+        }
+
     public Array(int... values){
         N=values.length;
         arr=Arrays.copyOf(values,N);
@@ -131,6 +157,23 @@ private int counter;
                 swap(arr[i],arr[min_i]);
             }
         }
+    }
+
+    public List checkN(){
+        int a = 0, b = 0, c = 0;
+        List list=new ArrayList();
+        for (int j = 0; j < N; j++)
+            if ((arr[j] > 99) && (arr[j] < 1000)) {
+                a = arr[j] / 10 / 10;
+                b = arr[j] / 10 % 10;
+                c = arr[j] % 100 % 10;
+                if (b != a && c != a && c != b)
+                    list.add(arr[j]);
+            }
+        if (!list.isEmpty()){
+            return list;
+        }
+        return null;
     }
 
     private boolean isPerfectSquare(int num){
