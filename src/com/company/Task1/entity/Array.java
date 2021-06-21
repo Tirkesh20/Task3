@@ -1,14 +1,12 @@
 package com.company.Task1.entity;
 
-import com.company.Task1.Exceptions.IndexOutOfBoundsException;
+import com.company.Task1.exceptions.IndexOutOfBoundsException;
 import com.company.Task1.tools.Scanners;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import  java.util.Arrays;
-import java.util.List;
 
 public class Array {
 
@@ -29,30 +27,6 @@ private int counter;
     }
 
 
-      public int binarySearch(int item) {
-            int first=0;
-            int last=N-1;
-            int position;
-            int comparisonCount = 1;    // для подсчета количества сравнений
-
-            // для начала найдем индекс среднего элемента массива
-            position = (first + last) / 2;
-
-            while ((arr[position] != item) && (first <= last)) {
-                comparisonCount++;
-                if (arr[position] > item) {  // если число заданного для поиска
-                    last = position - 1; // уменьшаем позицию на 1.
-                } else {
-                    first = position + 1;    // иначе увеличиваем на 1
-                }
-                position = (first + last) / 2;
-            }
-            if (first <= last) {
-               return this.arr[++position];
-            } else {
-                return 0;
-            }
-        }
 
     public Array(int... values){
         N=values.length;
@@ -88,112 +62,6 @@ private int counter;
             }
         }
         return max;
-    }
-
-    private void swap(int a,int b){
-    int temp=a;
-        a=b;
-        b=temp;
-    }
-
-    public void bubbleSort(){
-    for (int i=N-1;i>0;i--){
-        for (int j=1;j<i;j++){
-            if (arr[j]>arr[j+1]){
-                swap(arr[j],arr[j+1]);
-            }
-        }
-    }
-    }
-
-    public  void quickSort( int low, int high) {
-        if (arr.length == 0)
-            return;//завершить выполнение если длина массива равна 0
-
-        if (low >= high)
-            return;//завершить выполнение если уже нечего делить
-
-            // выбрать опорный элемент
-            int middle = low + (high - low) / 2;
-            int base = arr[middle];
-
-            // разделить на подмассивы, который больше и меньше опорного элемента
-            int i = low, j = high;
-            while (i <= j) {
-                while (arr[i] < base) {
-                    i++;
-                }
-
-                while (arr[j] > base) {
-                    j--;
-                }
-
-                if (i <= j) {//меняем местами
-                    swap(arr[i],arr[j]);
-                    i++;
-                    j--;
-                }
-            }
-            // вызов рекурсии для сортировки левой и правой части
-            if (low < j)
-                quickSort( low, j);
-
-            if (high > i)
-                quickSort( i, high);
-        }
-
-
-    public void selectionSort(){
-        for (int i=0;i<N;i++){
-            int min=arr[i];
-            int min_i=i;
-            for (int j=i+1;j<N;j++){
-                if ((arr[j]<min)){
-                    min=arr[j];
-                    min_i=j;
-                }
-            }
-            if (i!=min_i){
-                swap(arr[i],arr[min_i]);
-            }
-        }
-    }
-
-    public List checkN(){
-        int a = 0, b = 0, c = 0;
-        List list=new ArrayList();
-        for (int j = 0; j < N; j++)
-            if ((arr[j] > 99) && (arr[j] < 1000)) {
-                a = arr[j] / 10 / 10;
-                b = arr[j] / 10 % 10;
-                c = arr[j] % 100 % 10;
-                if (b != a && c != a && c != b)
-                    list.add(arr[j]);
-            }
-        if (!list.isEmpty()){
-            return list;
-        }
-        return null;
-    }
-
-    private boolean isPerfectSquare(int num){
-        int n=(int) Math.sqrt(num);
-        return (n*n==num);
-    }
-
-    public List fib(){
-        List arrayList=new ArrayList();
-        int count=0;
-        for (int i=0;i<N;i++){
-            if (isPerfectSquare(5*arr[i]*arr[i]+4)||isPerfectSquare(5*arr[i]*arr[i]-4)) {
-                arrayList.add(arr[i]);
-                count++;
-            }
-        }
-        if (count==0){
-            System.out.println("nothing found");;
-        }
-        return arrayList;
     }
 
 
@@ -233,21 +101,8 @@ private int counter;
         return min;
     }
 
-    public int[] getPrimeNumbers(){
-        int[] primeNumbers=new int[N];
-        int counter=0;
-        for (int i = 0;i<N;i++){
-            if (isPrime(arr[i])){
-                primeNumbers[counter]=arr[i];
-                counter++;
-            }
-        }
-        return primeNumbers;
-    }
 
-    public static boolean isPrime(int value){
-        return value % 2 != 0;
-    }
+
 
     @Override
     public int hashCode(){

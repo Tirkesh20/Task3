@@ -1,4 +1,4 @@
-package com.company.Task1.Exceptions;
+package com.company.Task1.exceptions;
 
 public class IndexOutOfBoundsException extends Exception{
 
