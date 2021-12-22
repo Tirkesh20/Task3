@@ -1,18 +1,16 @@
-package com.company.Task1.services;
+package com.company.Task1.service;
 
 
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static junit.framework.TestCase.*;
 
 public class ArraySearchServicesTest {
      int[] unsortedArray=new int[]{123,3,5,2,4,1,8,7,6,9};
-    int[] sortedArray=new int[]{1,2,3,4,5,6,7,8,9};;
     int[] nullArray=null;
     int[] emptyArray=new int[0];
 
-    SearchServices searchServices =new SearchServices();
+   private final SearchService searchServices =new DefaultSearchServices();
 
 
     @Test
@@ -38,7 +36,7 @@ public class ArraySearchServicesTest {
     }
     @Test
     public void testFindUniqueThreeDigitNumbers_WhenThereUniqueNumber(){
-        assertEquals(true, searchServices.findUniqueThreeDigitNumber(unsortedArray).contains(123));
+        assertTrue(searchServices.findUniqueThreeDigitNumber(unsortedArray).contains(123));
     }
 
     @Test

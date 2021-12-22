@@ -1,16 +1,15 @@
-package com.company.Task1.services;
+package com.company.Task1.service;
 
-import com.company.Task1.tools.Util;
+import com.company.Task1.tool.Util;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchServices {
+public class DefaultSearchServices implements SearchService{
 
-
-    public  List findUniqueThreeDigitNumber(int[] arr){
-        int a = 0, b = 0, c = 0;
-        List<Integer> list=new ArrayList();
+    public  List<Integer> findUniqueThreeDigitNumber(int[] arr){
+        int a ,b, c;
+        List<Integer> list=new ArrayList<>();
         for (int i : arr)
             if ((i > 99) && (i < 1000)) {
                 a = i / 10 / 10;

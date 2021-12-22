@@ -1,6 +1,6 @@
-package com.company.Task1.services;
+package com.company.Task1.service;
 
-public class SortServices {
+public class DefaultSortServices implements SortService {
 
     private void swap(int a, int b) {
         int temp = a;

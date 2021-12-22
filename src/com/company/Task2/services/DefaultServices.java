@@ -7,7 +7,7 @@ import com.company.Task2.valiadator.JaggedArrayValidation;
 
 import java.util.Comparator;
 
-public class Services {
+public class DefaultServices implements SortService {
     private final JaggedArrayValidation jaggedArrayValidation=new JaggedArrayValidation();
 
    public void maxValueSort(int[][] array){

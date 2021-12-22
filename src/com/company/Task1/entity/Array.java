@@ -1,7 +1,7 @@
 package com.company.Task1.entity;
 
 import com.company.Task1.exceptions.IndexOutOfBoundsException;
-import com.company.Task1.tools.Scanners;
+import com.company.Task1.tool.Scanners;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
